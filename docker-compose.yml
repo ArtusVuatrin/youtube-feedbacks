@@ -1,0 +1,21 @@
+# Use postgres/example user/password credentials
+version: '3.9'
+
+services:
+
+  db:
+    image: postgres
+    restart: always
+    container-name: db
+    shm_size: 128mb
+    environment:
+      POSTGRES_PASSWORD: password
+      PG_DATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - 5432:5432
+
+
+volumes:
+  postgres:
